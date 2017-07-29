@@ -12,8 +12,8 @@ matrix:
   fast_finish: true
 
 before_script:
-  - npm install -g karma karma-webpack karma-sourcemap-loader
   - npm install
+  - npm install -g karma karma-webpack karma-sourcemap-loader karma-mocha karma-chai karma-phantomjs-shim
 
 script:
   - npm test
