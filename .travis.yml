@@ -16,3 +16,9 @@ script:
 after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push herloct/swarm-visualizer:$TRAVIS_BRANCH
+  - if [[ $TRAVIS_TAG ]]; then
+    docker tag herloct/swarm-visualizer:$TRAVIS_BRANCH herloct/swarm-visualizer:alpine;
+    docker tag herloct/swarm-visualizer:alpine herloct/swarm-visualizer:latest;
+    docker push herloct/swarm-visualizer:alpine;
+    docker push herloct/swarm-visualizer:latest;
+    fi
