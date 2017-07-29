@@ -12,10 +12,10 @@ matrix:
   fast_finish: true
 
 before_script:
-  - npm install -D karma karma-webpack karma-sourcemap-loader karma-mocha karma-mocha-reporter karma-chai karma-phantomjs-shim phantom
+  - npm install
 
 script:
-  - npm test
+  - npm run dist
 
 after_success:
   - docker build --rm --tag herloct/swarm-visualizer:$TRAVIS_BRANCH -f Dockerfile.alpine .
