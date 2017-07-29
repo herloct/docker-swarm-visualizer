@@ -6,10 +6,14 @@ WORKDIR /app
 ADD ./package.json /app/package.json
 
 # Install dependencies
-RUN npm install --unsafe-perm=true --production
+RUN npm install --unsafe-perm=true
 
 # Add the rest of the sources
-ADD ./dist /app/dist
+ADD . /app
+
+
+# Build the app
+RUN npm run dist
 
 # MS : Number of milliseconds between polling requests. Default is 1000.
 # CTX_ROOT : Context root of the application. Default is /
