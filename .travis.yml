@@ -11,7 +11,7 @@ before_script:
   - docker build --rm --tag herloct/swarm-visualizer:$TRAVIS_BRANCH -f Dockerfile.alpine .
 
 script:
-  - echo 'Let\'s test something'
+  - echo "Let's test something"
 
 after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
