@@ -18,6 +18,8 @@ script:
   - npm run dist
 
 after_success:
+  - rm -rf node_modules
+  - npm install --production
   - docker build --rm --tag herloct/swarm-visualizer:$TRAVIS_BRANCH -f Dockerfile.alpine .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push herloct/swarm-visualizer:$TRAVIS_BRANCH
